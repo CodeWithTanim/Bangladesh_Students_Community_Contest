@@ -1,0 +1,42 @@
+# Bangladesh Students Community Contest Platform - Root .htaccess
+
+# 1. Disable Directory Listing
+Options -Indexes
+
+# 2. Block direct web access to sensitive code directories
+RedirectMatch 403 /(config|database|includes)/
+
+# Direct file blockers for sensitive formats
+<FilesMatch "\.(sql|bak|log|conf|ini|json|yml|yaml|md|txt)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order Deny,Allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# 3. Inject Secure Response Headers (Helps against Clickjacking, MIME-sniffing, XSS)
+<IfModule mod_headers.c>
+    # Prevent the site from being embedded in frames on other domains (Clickjacking Protection)
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Enforce strict MIME sniffing protection
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Enable browser XSS filtering
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Set secure referrer policy
+    Header set Referrer-Policy "no-referrer-when-downgrade"
+    
+    # Control caching for static assets
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$">
+        Header set Cache-Control "max-age=604800, public, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# 4. Handle clean error responses
+ErrorDocument 403 "Access Denied (403)"
+ErrorDocument 404 "Page Not Found (404)"

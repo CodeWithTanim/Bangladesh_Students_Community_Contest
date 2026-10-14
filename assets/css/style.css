@@ -1,0 +1,130 @@
+/* Bangladesh Students Community - Custom Premium CSS */
+
+/* PERSONAL FONTS */
+@font-face {
+    font-family: 'FN Priyo Nabi';
+    src: url('../fonts/FN Priyo Nabi Unicode.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hadi Rounded';
+    src: url('../fonts/Hadi Rounded Unicode.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hadi Sketch';
+    src: url('../fonts/Hadi Sketch Unicode.ttf') format('truetype');
+    font-display: swap;
+}
+
+
+
+/* Base Typography Configuration */
+body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+}
+
+/* Glassmorphism Accents */
+.glass-panel {
+    background: rgba(17, 24, 39, 0.65);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-light {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animated Gradient Hero Text */
+.gradient-text-emerald-rose {
+    background: linear-gradient(135deg, #10b981 0%, #065f46 50%, #f43f5e 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine-gradient 6s linear infinite;
+}
+
+/* Keyframe Animations */
+@keyframes shine-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes blob-float {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+/* Class to apply floating blob animations */
+.animate-blob {
+    animation: blob-float 12s infinite alternate ease-in-out;
+}
+
+/* Safe Area Transition Loader for forms */
+.loader-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top: 3px solid #10b981;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dynamic glow button effects */
+.btn-glow-emerald:hover {
+    box-shadow: 0 0 20px 2px rgba(16, 185, 129, 0.35);
+}
+
+.btn-glow-rose:hover {
+    box-shadow: 0 0 20px 2px rgba(244, 63, 94, 0.3);
+}
+
+/* Input styles focus glows */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+    border-color: rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Table styling fixes */
+th {
+    letter-spacing: 0.05em;
+}
+tr {
+    transition: background-color 150ms ease;
+}
+td {
+    vertical-align: middle;
+}
